@@ -137,7 +137,6 @@ def print_all_data():
     premium_total = 0
     for uid, details in insured_data.items():
         table_data.append([uid, details['name'], details['gender'], details['smoking'], details['age'], details['ins_code'], details['ins_type'], details['SI'], int(math.floor(details['premium']))])
-
     print(tabulate(table_data, headers= ['UID', 'name', 'gender', 'smoking', 'age', 'code', 'insurance name', 'SI', 'premium'], tablefmt= 'grid'))
     for x in insured_data:
         premium_total += insured_data[x]['premium']
@@ -210,9 +209,6 @@ def add_data():
             except ValueError:
                 print("Please input a number")
         while add_inscode < 1 or add_inscode > len(tipe_asuransi):
-            # print("Available insurance type:")
-            # for x in tipe_asuransi:
-            #     print(f"{x}: {tipe_asuransi[x]}")
             print("Please input the available insurance code")
             while True:
                 try:
