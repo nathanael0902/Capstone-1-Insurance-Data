@@ -206,72 +206,51 @@ def add_data():
                 for x in tipe_asuransi:
                     print(f"{x}: {tipe_asuransi[x]}")
                 add_inscode = int(input(f"Input the insurance code available: "))
-                break
-            except ValueError:
-                print("Please input a number")
-        while add_inscode < 1 or add_inscode > len(tipe_asuransi):
-            print("Please input the available insurance code")
-            while True:
-                try:
-                    print("Available insurance type:")
+                while add_inscode < 1 or add_inscode > len(tipe_asuransi):
+                    print("Please input the available insurance code")
                     for x in tipe_asuransi:
                         print(f"{x}: {tipe_asuransi[x]}")
                     add_inscode = int(input(f"Input the insurance code available: "))
-                    break
-                except ValueError:
-                    print("Please input a number")
+                break
+            except ValueError:
+                print("Please input a number")
 
         if 'endowment' in tipe_asuransi[add_inscode].lower():
             while True:
                 try:
                     add_age = int(input("Input the age of the insured(17-55): "))
+                    while add_age < 17 or add_age > 55:
+                        print('The available age for Endowment Plan is 17-55')
+                        add_age = int(input("Input the age of the insured(17-55): "))
                     break
                 except ValueError:
                     print("Please input a number")
-            while add_age < 17 or add_age > 55:
-                print('The available age for Endowment Plan is 17-55')
-                while True:
-                    try:
-                        add_age = int(input("Input the age of the insured(17-55): "))
-                        break
-                    except ValueError:
-                        print("Please input a number")
         else:
             while True:
                 try:
                     add_age = int(input("Input the age of the insured(17-65): "))
+                    while add_age < 17 or add_age > 65:
+                        print('The available age for the insurance plan is 17-65')
+                        add_age = int(input("Input the age of the insured(17-65): "))
                     break
                 except ValueError:
                     print("Please input a number")
-            while add_age < 17 or add_age > 65:
-                print('The available age for the insurance plan is 17-65')
-                while True:
-                    try:
-                        add_age = int(input("Input the age of the insured(17-65): "))
-                        break
-                    except ValueError:
-                        print("Please input a number")
         
         while True:
             try:
                 add_SI = int(input("Input the sum insured: "))
+                while add_SI < 500000000 or add_SI > 5000000000:
+                    print("Please input SI between 500,000,000 and 5,000,000,000")
+                    add_SI = int(input("Input the sum insured: "))
                 break
             except ValueError:
                 print("Please input a number")
-        while add_SI < 500000000 or add_SI > 5000000000:
-            print("Please input SI between 500,000,000 and 5,000,000,000")
-            while True:
-                try:
-                    add_SI = int(input("Input the sum insured: "))
-                    break
-                except ValueError:
-                    print("Please input a number")
+
         insured_data_temp = {add_key: {"name" : add_name, "gender" : add_gender2, "smoking" : add_smoking2, "age" : add_age, "ins_code" : add_inscode, "ins_type" : tipe_asuransi[add_inscode], "SI" : add_SI, "premium" : 0}}
         calc_temp()
         table_data = []
         for uid, details in insured_data_temp.items():
             table_data.append([uid, details['name'], details['gender'], details['smoking'], details['age'], details['ins_code'], details['ins_type'], details['SI'], int(math.floor(details['premium']))])
-
         print(tabulate(table_data, headers= ['UID', 'name', 'gender', 'smoking', 'age', 'code', 'insurance name', 'SI', 'premium'], tablefmt= 'grid'))
         print("Save the insured's data?")
         confirmation()
@@ -333,17 +312,12 @@ def update_menu():
             while True:
                 try:
                     update_menu_input = int(input("Input the number for detail to be changed: "))
+                    while update_menu_input < 1 or update_menu_input > 6:
+                        print("The menu does not exist")
+                        update_menu_input = int(input("Input the number for detail to be changed: "))
                     break
                 except ValueError:
                     print("Please input a number")
-            while update_menu_input < 1 or update_menu_input > 6:
-                print("The menu does not exist")
-                while True:
-                    try:
-                        update_menu_input = int(input("Input the number for detail to be changed: "))
-                        break
-                    except ValueError:
-                        print("Please input a number")
             if update_menu_input == 1:
                 new_name = input("Input the updated name of the insured: ").capitalize()
                 insured_data_temp[update_key]['name'] = new_name
@@ -375,32 +349,22 @@ def update_menu():
                     while True:
                         try:
                             new_age = int(input("Input the new age(17-55): "))
+                            while new_age < 17 or new_age > 55:
+                                print("For endowment insured, available age is 17-55")
+                                new_age = int(input("Input the new age(17-55): "))
                             break
                         except ValueError:
                             print("Input a number")
-                    while new_age < 17 or new_age > 55:
-                        print("For endowment insured, available age is 17-55")
-                        while True:
-                            try:
-                                new_age = int(input("Input the new age(17-55): "))
-                                break
-                            except ValueError:
-                                print("Input a number")
                 else:
                     while True:
                         try:
                             new_age = int(input("Input the new age(17-65): "))
+                            while new_age < 17 or new_age > 65:
+                                print("The available age is 17-65")
+                                new_age = int(input("Input the new age(17-65): "))
                             break
                         except ValueError:
                             print("Input a number")
-                    while new_age < 17 or new_age > 65:
-                        print("The available age is 17-65")
-                        while True:
-                            try:
-                                new_age = int(input("Input the new age(17-65): "))
-                                break
-                            except ValueError:
-                                print("Input a number")
                 insured_data_temp[update_key]['age'] = new_age
                 continue_update()
             if update_menu_input == 5:
@@ -412,17 +376,12 @@ def update_menu():
                     while True:
                         try:
                             new_code = int(input("Input the new insurance type code: "))
+                            while new_code not in list(tipe_asuransi_temp.keys()):
+                                print("The available insurance types are only on above choices")
+                                new_code = int(input("Input the new insurance type code: "))
                             break
                         except ValueError:
                             print("Please input a number")
-                    while new_code not in list(tipe_asuransi_temp.keys()):
-                        print("The available insurance types are only on above choices")
-                        while True:
-                            try:
-                                new_code = int(input("Input the new insurance type code: "))
-                                break
-                            except ValueError:
-                                print("Please input a number")
                 else:
                     print("The available insurance types are:")
                     for x in tipe_asuransi:
@@ -430,17 +389,12 @@ def update_menu():
                     while True:
                         try:
                             new_code = int(input("Input the new insurance type code: "))
+                            while new_code not in list(tipe_asuransi.keys()):
+                                print("The available insurance types are only on above choices")
+                                new_code = int(input("Input the new insurance type code: "))
                             break
                         except ValueError:
                             print("Please input a number")
-                    while new_code not in list(tipe_asuransi.keys()):
-                        print("The available insurance types are only on above choices")
-                        while True:
-                            try:
-                                new_code = int(input("Input the new insurance type code: "))
-                                break
-                            except ValueError:
-                                print("Please input a number")
                 insured_data_temp[update_key]['ins_code'] = new_code
                 insured_data_temp[update_key]['ins_type'] = tipe_asuransi[new_code]
                 continue_update()
@@ -448,17 +402,12 @@ def update_menu():
                 while True:
                     try:
                         new_SI = int(input("Input new sum insured: "))
+                        while new_SI < 500000000 or new_SI > 5000000000:
+                            print("Sum Insured can only be between 500,000,000 and 5,000,000,000")
+                            new_SI = int(input("Input new sum insured: "))
                         break
                     except ValueError:
                         print("Please input a number")
-                while new_SI < 500000000 or new_SI > 5000000000:
-                    print("Sum Insured can only be between 500,000,000 and 5,000,000,000")
-                    while True:
-                        try:
-                            new_SI = int(input("Input new sum insured: "))
-                            break
-                        except ValueError:
-                            print("Please input a number")
                 insured_data_temp[update_key]['SI'] = new_SI
                 continue_update()
         calc_temp()
@@ -531,18 +480,12 @@ def ins_type_add():
             try:
                 print("The percentage must be below 5%")
                 type_SI = float(input("Input the % of SI to be used in calculation: "))
+                while type_SI <= 0 or type_SI > 5:
+                    print("The percentage must be between 0 - 5")
+                    type_SI = float(input("Input the % of SI to be used in calculation: "))
                 break
             except ValueError:
                 print("Please input a number")
-        while type_SI <= 0 or type_SI > 5:
-            print("The percentage must be between 0 - 5")
-            while True:
-                try:
-                    print("The percentage must be below 5%")
-                    type_SI = float(input("Input the % of SI to be used in calculation: "))
-                    break
-                except ValueError:
-                    print("Please input a number")
         ins_type_temp = {type_add_key : type_name}
         premium_type_temp = {type_add_key : round((type_SI / 100), 3)}
         print(f"""
@@ -865,17 +808,11 @@ def main_menu():
     while True:
         try:
             menu_input = int(input("Input menu number: "))
+            while menu_input < 1 or menu_input > 8:
+                print("Please input a number between 1-8")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input < 1 or menu_input > 8:
-        print("Please input a number between 1-8")
-        while True:
-            try:
-                menu_input = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_1():
     global menu_input_1
@@ -889,17 +826,11 @@ def menu_1():
     while True:
         try:
             menu_input_1 = int(input("Input menu number: "))
+            while menu_input_1 < 1 or menu_input_1 > 3:
+                print("Please input a number between 1-3")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_1 < 1 or menu_input_1 > 3:
-        print("Please input a number between 1-3")
-        while True:
-            try:
-                menu_input_1 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_2():
     global menu_input_2
@@ -912,17 +843,11 @@ def menu_2():
     while True:
         try:
             menu_input_2 = int(input("Input menu number: "))
+            while menu_input_2 < 1 or menu_input_2 > 2:
+                print("Please input a number between 1-2")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_2 < 1 or menu_input_2 > 2:
-        print("Please input a number between 1-2")
-        while True:
-            try:
-                menu_input_2 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_3():
     global menu_input_3
@@ -935,17 +860,11 @@ def menu_3():
     while True:
         try:
             menu_input_3 = int(input("Input menu number: "))
+            while menu_input_3 < 1 or menu_input_3 > 2:
+                print("Please input a number between 1-2")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_3 < 1 or menu_input_3 > 2:
-        print("Please input a number between 1-2")
-        while True:
-            try:
-                menu_input_3 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_4():
     global menu_input_4
@@ -958,17 +877,11 @@ def menu_4():
     while True:
         try:
             menu_input_4 = int(input("Input menu number: "))
+            while menu_input_4 < 1 or menu_input_4 > 2:
+                print("Please input a number between 1-2")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_4 < 1 or menu_input_4 > 2:
-        print("Please input a number between 1-2")
-        while True:
-            try:
-                menu_input_4 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_5():
     global menu_input_5
@@ -984,17 +897,11 @@ def menu_5():
     while True:
         try:
             menu_input_5 = int(input("Input menu number: "))
+            while menu_input_5 < 1 or menu_input_5 > 5:
+                print("please input a number between 1-5")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_5 < 1 or menu_input_5 > 5:
-        print("please input a number between 1-5")
-        while True:
-            try:
-                menu_input_5 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_6():
     global menu_input_6
@@ -1009,17 +916,11 @@ def menu_6():
     while True:
         try:
             menu_input_6 = int(input("Input menu number: "))
+            while menu_input_6 < 1 or menu_input_6 > 4:
+                print("please input a number between 1-4")
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_6 < 1 or menu_input_6 > 4:
-        print("please input a number between 1-4")
-        while True:
-            try:
-                menu_input_6 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
 
 def menu_7():
     global menu_input_7
@@ -1035,17 +936,12 @@ def menu_7():
     while True:
         try:
             menu_input_7 = int(input("Input menu number: "))
+            while menu_input_7 < 1 or menu_input_7 >5:
+                menu_input_7 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
-    while menu_input_7 < 1 or menu_input_7 > 5:
-        print("please input a number between 1-5")
-        while True:
-            try:
-                menu_input_7 = int(input("Input menu number: "))
-                break
-            except ValueError:
-                print("Please input a number")
+
 
 
 # Main Program
