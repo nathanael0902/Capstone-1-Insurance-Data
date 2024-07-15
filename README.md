@@ -1,7 +1,7 @@
 # Capstone Project : Modul 1 - Insurance Data with CRUD
-This application can be used to manage insurance data.
-This application could be used in an insurance company to store their data and manage them.
-This application can be used by insurance company employees, especially in the operational team or agents to add an insured.
+- This application can be used to manage insurance data.
+- This application could be used in an insurance company to store their data and manage them.
+- This application can be used by insurance company employees, especially in the operational team or agents to add an insured.
 
 ## Application features
 - Reading / Displaying insured data,
