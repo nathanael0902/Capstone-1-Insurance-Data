@@ -810,6 +810,7 @@ def main_menu():
             menu_input = int(input("Input menu number: "))
             while menu_input < 1 or menu_input > 8:
                 print("Please input a number between 1-8")
+                menu_input = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
@@ -828,6 +829,7 @@ def menu_1():
             menu_input_1 = int(input("Input menu number: "))
             while menu_input_1 < 1 or menu_input_1 > 3:
                 print("Please input a number between 1-3")
+                menu_input_1 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
@@ -845,6 +847,7 @@ def menu_2():
             menu_input_2 = int(input("Input menu number: "))
             while menu_input_2 < 1 or menu_input_2 > 2:
                 print("Please input a number between 1-2")
+                menu_input_2 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
@@ -862,6 +865,7 @@ def menu_3():
             menu_input_3 = int(input("Input menu number: "))
             while menu_input_3 < 1 or menu_input_3 > 2:
                 print("Please input a number between 1-2")
+                menu_input_3 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
@@ -879,6 +883,7 @@ def menu_4():
             menu_input_4 = int(input("Input menu number: "))
             while menu_input_4 < 1 or menu_input_4 > 2:
                 print("Please input a number between 1-2")
+                menu_input_4 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
@@ -899,9 +904,11 @@ def menu_5():
             menu_input_5 = int(input("Input menu number: "))
             while menu_input_5 < 1 or menu_input_5 > 5:
                 print("please input a number between 1-5")
+                menu_input_5 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
+
 
 def menu_6():
     global menu_input_6
@@ -918,6 +925,7 @@ def menu_6():
             menu_input_6 = int(input("Input menu number: "))
             while menu_input_6 < 1 or menu_input_6 > 4:
                 print("please input a number between 1-4")
+                menu_input_6 = int(input("Input menu number: "))
             break
         except ValueError:
             print("Please input a number")
@@ -937,6 +945,7 @@ def menu_7():
         try:
             menu_input_7 = int(input("Input menu number: "))
             while menu_input_7 < 1 or menu_input_7 >5:
+                print('please input a number between 1-5')
                 menu_input_7 = int(input("Input menu number: "))
             break
         except ValueError:
