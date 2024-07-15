@@ -126,6 +126,7 @@ def confirmation():
     global confirmation_input
     confirmation_input1 = input("Are you sure?(Y/N): ").lower()
     while confirmation_input1 not in ['yes', 'no', 'y', 'n', '1', '0']:
+        print('Please input a yes or no')
         confirmation_input1 = input("Are you sure?(Y/N): ").lower()
     if confirmation_input1 in ['yes', 'y', '1']:
         confirmation_input = 'Y'
